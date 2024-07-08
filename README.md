@@ -25,6 +25,7 @@ In our implementation, to efficiently obtain DCT coefficents of the original RGB
 The overview design of EfficientGaze is shown in the following figure, which includes three stages: the self-supervised pre-training stage, the supervised calibration stage, and the deployment stage. In the self-supervised pre-training stage, EfficientGaze takes unlabeled facial images as inputs to pre-train a gaze embedding network for unsupervised gaze representation learning. Next, the pre-trained gaze embedding network is transferred to the supervised calibration stage, and serves as a feature extractor for the downstream gaze estimation task. Specifically, taking a small number of labeled facial images from the targeted subject as input, we first leverage the frequency-domain image processing module to obtain the DCT coefficients of the original RGB images. Then, we fine-tune the pre-trained gaze embedding network and the gaze estimator for subject-specific gaze estimation. Note that subject-specific calibration is essential to ensure good gaze-estimation accuracy, even for high-end eye-tracking systems. Finally, in the deployment stage, the fine-tuned gaze embedding network and the gaze estimator are used for run-time gaze estimation. 
 
 <img src="https://github.com/FreeGaze/EfficientGaze/blob/main/figures/cl_framework.pdf" alt="My Image" width="500"/>
+<img src="https://github.com/FreeGaze/FreeGaze-Source/blob/main/figures/overview.png" alt="My Image" width="500"/>
 
 
 ## Frequency-domain Gaze Estimation
@@ -32,6 +33,7 @@ The overview design of EfficientGaze is shown in the following figure, which inc
 To reduce the latency for gaze estimation system in both calibration and inference stages, we devise the frequency-domain gaze estimation. It leverages the feature extraction capability of the discrete cosine transform (DCT) and takes the frequency-domain DCT coefficients of the original RGB image as inputs for gaze estimation. Moreover, motivated by the fact that the critical content-defining information of the image is concentrated in the low end of the frequency spectrum, whereas signals in the high-frequency endare mostly trivial and are associated with noise, we further exploit the spectral compaction property of DCT toaggressively compact the essential perceptual information inthe RGB image into a few DCT coefficients. The pipeline of frequency-domain image processing is shown as below:
 
 <img src="https://github.com/FreeGaze/EfficientGaze/figures/cl_framework.pdf" alt="My Image" width="500"/>
+
 
 ## Frequency-domain Contrastive Gaze Representation Learning
 
