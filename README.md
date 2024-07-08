@@ -17,7 +17,7 @@ Gaze estimation is of great importance to many scientific fields and daily appli
 In our implementation, to efficiently obtain DCT coefficients of the original RGB images, we preprocess the dataset by saving all the images in the format of .jpg. We then use jpeg2dct to directly read DCT coefficients from a jpg image in the training and testing stages. Moreover, we apply facial landmark detection to locate the positions of eyes and save the coordinates of periocular bounding boxes for each image as numpy arrays.
 
 ### Codes
-* The file Contrastive_gaze_representation_learning.ipynb contains the main function for contrastive gaze representation learning.
+* The file Multi-task gaze-aware contrastive learning.ipynb contains the main function for contrastive gaze representation learning.
 * The file common_functions.py includes how to calculate the average angular error given a batch of images and gaze annotations.
 * The file trans_in_rgb.py details the data augmentation we adopted in this project.
 
